@@ -1,7 +1,6 @@
 import random
 
-# kryt zdejmuje stes
-# klasa co zdejmuje stres
+# kryt zdejmuje stes jak w darkest dungeon
 class bpchar:
     def __init__(self, name, damage, health, maxhealth, armor, dodge, crit_chance, speed, stress, status_effects):
         self.name = name
@@ -17,37 +16,32 @@ class bpchar:
 
     def attack(self):
         raise NotImplementedError("trzeba dla każdej postaci osobno napisać")
+
+    def death(self):
+        raise NotImplementedError("trzeba dla każdej frakcji napisać")
     
-    def heal(self):
+    def heal(self, amount):
+        self.health += amount
         if self.health > self.maxhealth:
-            raise NotImplementedError("trzeba dla każdej postaci osobno napisać")
-
-    def char_death(self):
-        if self.health <= 0:
-            self.health = random.randint(0, 1)
-            if self.health == 1:
-                print("you lived")
-            elif self.health == 0:
-                print("you died")
-
-    def enemy_death(self):
-        if self.health <= 0:
-            print("you've killed an enemy")
-
+            self.health = self.maxhealth
+    
     def block(self, damage):
-        true_damage = max(damage - self.armor, 0) * 0.5
-        self.health -= true_damage
-        self.char_death()
+        true_damage = max(damage - self.armor, 0)
+        blocked_damage = true_damage - round(true_damage * 0.5)
+        self.health -= round(true_damage * 0.5)
+        self.death()
+        return true_damage, blocked_damage
+    
+    def dmg_armor(damage, armor):
+        if damage - armor < 0:
+            return 0
+        else:
+            return damage - armor
 
-    def char_dmg_taken(self, damage):
+    def dmg_taken(self, damage):
         true_damage = max(damage - self.armor, 0)
         self.health -= true_damage
-        self.char_death()
-
-    def enemy_dmg_taken(self, damage):
-        true_damage = max(damage - self.armor, 0)
-        self.health -= true_damage
-        self.enemy_death()
+        self.death()
 
     def crit(self, damage):
         if random.randint(1, 100) <= self.crit_chance:
@@ -60,7 +54,7 @@ class bpchar:
             return 0
         else:
             return damage
-        #zmienia hp na 1
+        #zmienia hp na 1 (zawał)
     def stress_(self):
         if self.stress >= 100:
             self.health = 1
@@ -96,3 +90,4 @@ class bpchar:
 #6)jakiś ziomek co losowe rzeczy robi, np atak ma 1/3, na krawienie, truciznę lub stuna, healka o losowej sile, losowego buffa lub dmg o losowej wartości
 #7)kleryk klasyczny healer buffy
 #8)plaugedoctor truciźny aoe i leczy chujowo
+#9)klasa co zdejmuje głównie stres

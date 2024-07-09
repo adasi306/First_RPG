@@ -1,49 +1,56 @@
 from characters import knight
 from enemies import skeleton
+from bp import bpchar
 
 def fight(char, enemy):
-    while char.health > 0 and enemy.health > 0:
-        print(f"\n{char.name}'s turn:")
-        action = input("Choose action: (1) Attack1 (2) Attack2 (3) Block\n")
-        if action == '1':
-            damage = char.attack1()
-            enemy.enemy_dmg_taken(damage)
-            if damage - enemy.armor < 0:
-                xd = 0
-            else:
-                xd = damage - enemy.armor
-            print(f"{char.name} attacks {enemy.name} for {xd} damage.")
-        elif action == '2':
-            damage = char.attack2()
-            enemy.enemy_dmg_taken(damage)
-            if damage - enemy.armor < 0:
-                xd = 0
-            else:
-                xd = damage - enemy.armor
-            print(f"{char.name} attacks {enemy.name} for {xd} damage.")
-        elif action == '3':
-            char.block
-        else:
-            print(f"\n{enemy.name}'s turn:")
-            damage = enemy.attack()
-            char.char_dmg_taken(damage)
-        if damage - char.armor < 0:
-            xd = 0
-        else:
-            xd = damage - char.armor
-        if char.health <= 0:
-            char.health == 0
-        if enemy.health <= 0:
-            enemy.health == 0
-        print(f"{enemy.name} attacks {char.name} for {xd} damage.")
-        print(f"{char.name}: {char.health}/{char.maxhealth} HP")
-        print(f"{enemy.name}: {enemy.health}/{enemy.maxhealth} HP")
-        if char.char_death() or enemy.enemy_death():
-            break
-        
+    bp = bpchar
 
-#name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects
+    if char.speed >= enemy.speed:
+        first, second = char, enemy
+    else:
+        first, second = enemy, char
+
+    while char.health > 0 and enemy.health > 0:
+        for current, target in [(first, second), (second, first)]:
+            if current.health <= 0 or target.health <= 0:
+                break
+            
+            print(f"\n{current.name}'s turn:")
+            if isinstance(current, knight):
+                action = current.take_action()
+                if action == '1':
+                    damage = current.action1()
+                    target.dmg_taken(damage)
+                    print(f"{current.name} attacks {target.name} for {bp.dmg_armor(damage, target.armor)} HP.")
+                elif action == '2':
+                    heal_amount = current.action2()
+                    print(f"{current.name} heals himself for {heal_amount} HP.")
+                elif action == '3':
+                    current.action3()
+                    print(f"{current.name} is blocking")
+            else:
+                damage = current.attack()
+                if target.blocking:
+                    true_damage, blocked_damage = target.block(damage)
+                    print(f"{current.name} attacks {target.name} for {true_damage} HP. Blocked damage: {blocked_damage}.")
+                else:
+                    target.dmg_taken(damage)
+                    print(f"{current.name} attacks {target.name} for {bp.dmg_armor(damage, target.armor)} HP.")
+            
+            print(f"{char.name}: {char.health}/{char.maxhealth} HP")
+            print(f"{enemy.name}: {enemy.health}/{enemy.maxhealth} HP")
+            
+            if char.death() or enemy.death():
+                break
+
+
+# name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects
 knight_stats = knight("Reynauld", (3, 6), 35, 35, 1, 0, 10, 1, 0, [])
-enemy_stats = skeleton("Enemy", (2, 5), 30, 30, 0, 0, 5, 1, 0, [])
+enemy_stats = skeleton("Enemy", (2, 5), 30, 30, 0, 0, 5, 2, 0, [])
 
 fight(knight_stats, enemy_stats)
+#TODO
+#stres
+#więcej niż 1 postać
+#statusy
+#miejsca
