@@ -14,7 +14,6 @@ class skeleton(enemy):
 
     def attack(self):
         base_damage = random.choice(range(*self.damage))
-        if random.randint(1, 100) <= self.crit_chance:
-            return self.crit(base_damage)
-        else:
-            return base_damage
+        damage, is_crit = self.crit(base_damage)
+        stress_damage = random.randint(15,20) if is_crit else 0  # Dodaj 20 stresu przy krytycznych uderzeniach
+        return damage, stress_damage
