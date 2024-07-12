@@ -18,7 +18,8 @@ class hero(bpchar):
 
 
 class knight(hero):
-    action_names=["attack", "heal" , "block"]
+    action_names = ["attack", "heal", "block"]
+
     def __init__(self, name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects):
         super().__init__(name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects)
         self.blocking = False
@@ -26,17 +27,21 @@ class knight(hero):
     def action1(self):
         base_damage = random.choice(range(*self.damage))
         if random.randint(1, 100) <= self.crit_chance:
-            return self.crit(base_damage)
+            damage, _ = self.crit(base_damage)
+            stress_damage = random.randint(15, 20)
+            return damage, stress_damage
         else:
-            return base_damage
-        
+            return base_damage, 0
+
     def action2(self):
         heal_amount = random.choice(range(*self.damage))
         self.heal(heal_amount)
         if random.randint(1, 100) <= self.crit_chance:
-            return self.crit(heal_amount)
+            crit_heal_amount, _ = self.crit(heal_amount)
+            stress_damage = random.randint(15, 20)
+            return crit_heal_amount, stress_damage
         else:
-            return heal_amount
+            return heal_amount, 0
 
     def action3(self):
         self.blocking = True

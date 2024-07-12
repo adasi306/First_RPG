@@ -29,6 +29,7 @@ class bpchar:
         true_damage = max(damage - self.armor, 0)
         blocked_damage = true_damage - round(true_damage * 0.5)
         self.health -= round(true_damage * 0.5)
+        self.stress_()
         self.death()
         return true_damage, blocked_damage
     
@@ -41,23 +42,26 @@ class bpchar:
     def dmg_taken(self, damage):
         true_damage = max(damage - self.armor, 0)
         self.health -= true_damage
+        self.stress_()
         self.death()
 
     def crit(self, damage):
         if random.randint(1, 100) <= self.crit_chance:
-            return damage * 2
+            return damage * 2, True
         else:
-            return damage
+            return damage, False
 
-    def dodge_chance(self, damage):
-        if random.randint(1, 100) <= self.dodge * 5:
-            return 0
-        else:
-            return damage
-        #zmienia hp na 1 (zawał)
-    def stress_(self):
+    def dodge_chance(self):
+        self.dodge_xd = random.randint(1, 100) <= self.dodge * 5
+        return self.dodge_xd
+
+    def stress_(self):    #zmienia hp na 1 (zawał)
         if self.stress >= 100:
             self.health = 1
+            self.stress = 75
+
+    def stress_heal(self, amount):
+        self.stress = max(self.stress - amount, 0)
 
     def dmg_buff(self, damage):
         return damage * 1.5
@@ -71,7 +75,7 @@ class bpchar:
     def poison(self):
         return 5
     
-    def stun(self): #blokuje akcje
+    def stun(self):
         pass
 
     def __str__(self):
