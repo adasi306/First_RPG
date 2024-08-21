@@ -1,8 +1,7 @@
 import random
 
-# kryt zdejmuje stes jak w darkest dungeon
 class bpchar:
-    def __init__(self, name, damage, health, maxhealth, armor, dodge, crit_chance, speed, stress, status_effects):
+    def __init__(self, name, damage, health, maxhealth, armor, dodge, accuracy, crit_chance, speed, stress, status_effects):
         self.name = name
         self.damage = damage
         self.health = health
@@ -13,6 +12,8 @@ class bpchar:
         self.speed = speed
         self.stress = stress
         self.status_effects = status_effects
+        self.accuracy = accuracy
+        #resist
 
     def attack(self):
         raise NotImplementedError("trzeba dla każdej postaci osobno napisać")
@@ -47,10 +48,14 @@ class bpchar:
 
     def crit(self, damage):
         if random.randint(1, 100) <= self.crit_chance:
-            return damage * 2, True
+            return damage * 2
         else:
-            return damage, False
-
+            return damage
+        
+    def if_attack_hit(self):
+        self.hit = random.randint(1, 100) > self.accuracy
+        return self.hit
+        
     def dodge_chance(self):
         self.dodge_xd = random.randint(1, 100) <= self.dodge * 5
         return self.dodge_xd
@@ -70,28 +75,35 @@ class bpchar:
         return damage * 0.5
     
     def bleed(self):
-        return 2
+        raise NotImplementedError("trzeba dla każdej postaci osobno napisać")
     
-    def poison(self):
-        return 5
+    def apply_poison(self, charges):
+        poison_effect = next((effect for effect in self.status_effects if effect['type'] == 'poison'), None)
+        if poison_effect:
+            poison_effect['charges'] += charges
+        else:
+            self.status_effects.append({'type': 'poison', 'charges': charges})
+        print(f"{self.name} has been poisoned! Poison charges: {charges}")
+
+    def process_status_effects(self):
+        for effect in self.status_effects:
+            if effect['type'] == 'poison':
+                poison_damage = effect['charges']
+                self.health -= poison_damage
+                effect['charges'] -= 1
+                print(f"{self.name} takes {poison_damage} poison damage.")
+                if effect['charges'] <= 0:
+                    self.status_effects.remove(effect)
+                if self.health <= 0:
+                    self.death()
     
     def stun(self):
-        pass
+        raise NotImplementedError("trzeba dla każdej postaci osobno napisać")
+    
+    def get_status_effects_str(self):
+        return ", ".join([f"{effect['type']} {effect['charges']}" for effect in self.status_effects])
 
     def __str__(self):
         return (f"Name: {self.name} \t Damage {self.damage} \t Health {self.health}/{self.maxhealth} \t Armor {self.armor} \t "
-                f"Dodge {self.dodge} \t Crit chance {self.crit_chance}% \t Speed {self.speed} \t "
+                f"Dodge {self.dodge} \t Accuracy {self.accuracy} \t Crit chance {self.crit_chance}% \t Speed {self.speed} \t "
                 f"Stress {self.stress}/100 \t Status effects {self.status_effects}")
-    
-
-
-#pomysły na postacie
-#1)rycerz klasyczny tank z basic skillkami
-#2)barbażyńca im mniej hp więcej dmg?
-#3)rouge nakłada krawienie lub bije dużo bazowo
-#4)rogal z bronią palną co strzela w wiele oponentów lub dowolnego
-#5)rogal co rzuca nożami zatrutymi
-#6)jakiś ziomek co losowe rzeczy robi, np atak ma 1/3, na krawienie, truciznę lub stuna, healka o losowej sile, losowego buffa lub dmg o losowej wartości
-#7)kleryk klasyczny healer buffy
-#8)plaugedoctor truciźny aoe i leczy chujowo
-#9)klasa co zdejmuje głównie stres
