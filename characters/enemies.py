@@ -9,11 +9,14 @@ class enemy(bpchar):
 
 
 class skeleton(enemy):
-    def __init__(self, name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects):
-        super().__init__(name, damage, health, maxhealth, armor, dodge_chance, crit_chance, speed, stress, status_effects)
+    def __init__(self, name, damage, health, maxhealth, armor, dodge, accuracy , crit_chance, speed, stress, status_effects):
+        super().__init__(name, damage, health, maxhealth, armor, dodge, accuracy , crit_chance, speed, stress, status_effects)
 
     def attack(self):
         base_damage = random.choice(range(*self.damage))
-        damage, is_crit = self.crit(base_damage)
-        stress_damage = random.randint(15,20) if is_crit else 0  # Dodaj 20 stresu przy krytycznych uderzeniach
-        return damage, stress_damage
+        if random.randint(1, 100) <= self.crit_chance:
+            damage = self.crit(base_damage)
+            stress_damage = random.randint(15, 20)
+            return damage, stress_damage
+        else:
+            return base_damage
