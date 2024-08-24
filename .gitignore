@@ -1,0 +1,45 @@
+# Ignorowanie plików z katalogu systemu operacyjnego
+.DS_Store
+Thumbs.db
+
+# Ignorowanie wirtualnych środowisk Python
+venv/
+env/
+.venv/
+.env/
+
+# Ignorowanie plików związanych z kompilacją Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignorowanie plików logów
+*.log
+
+# Ignorowanie plików konfiguracyjnych IDE/edytorów
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorowanie plików baz danych SQLite
+*.sqlite3
+*.db
+
+# Ignorowanie plików związanych z testami
+.coverage
+.tox/
+.pytest_cache/
+htmlcov/
+
+# Ignorowanie plików tymczasowych tworzonych przez narzędzia
+*.mypy_cache/
+*.pytest_cache/
+*.pylint.d/
+.cache/
+.eggs/
+*.egg-info/
+
+# Ignorowanie plików z danymi środowiskowymi
+.env
+*.env
