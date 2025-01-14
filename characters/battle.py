@@ -19,16 +19,22 @@ def fight(chars, enemies):
 
     all_combatants = sorted_combatants
 
-    while any(not char.dead for char in chars) and any(not enemy.dead for enemy in enemies):
+    while any(not char.dead for char in chars) and any(
+        not enemy.dead for enemy in enemies
+    ):
         BlueprintCharacter.update_positions(chars)
         BlueprintCharacter.update_positions(enemies)
         print("\n--- Current team status ---")
         for char in chars:
             if not char.dead:
-                print(f"{char.position}. {char.name}: {char.stats.health}/{char.stats.maxhealth} HP \t {char.stats.stress}/100 Stress \t Status: {char.get_status_effects_str()}")
+                print(
+                    f"{char.position}. {char.name}: {char.stats.health}/{char.stats.maxhealth} HP \t {char.stats.stress}/100 Stress \t Status: {char.get_status_effects_str()}"
+                )
         for enemy in enemies:
             if not enemy.dead:
-                print(f"{enemy.position}. {enemy.name}: {enemy.stats.health}/{enemy.stats.maxhealth} HP \t Status: {enemy.get_status_effects_str()}")
+                print(
+                    f"{enemy.position}. {enemy.name}: {enemy.stats.health}/{enemy.stats.maxhealth} HP \t Status: {enemy.get_status_effects_str()}"
+                )
         print("---------------------------")
 
         for current in sorted_combatants:
@@ -41,7 +47,9 @@ def fight(chars, enemies):
                 continue
 
             if current.stats.stress >= 76:
-                print(f"\n{current.name} is highly stressed, losing 2 HP and gaining 2 stress at the start of the turn.")
+                print(
+                    f"\n{current.name} is highly stressed, losing 2 HP and gaining 2 stress at the start of the turn."
+                )
                 current.stats.health -= 2
                 current.stats.stress -= 2
                 if current.stats.health <= 0:
@@ -118,8 +126,6 @@ fight(heroes, enemies)
 
 # znane błędy:
 
-# pokazywanie dobrych pozycji
-
 
 # import os
 # input("Press Enter to continue...")
@@ -139,5 +145,5 @@ fight(heroes, enemies)
 
 # bonus dmg z mark nie działa
 # już działa, ale pokazuje źle
-#Skeleton 1 is marked! Takes 6 damage.
-#Reynauld attacks Skeleton 1 for 4 HP.
+# Skeleton 1 is marked! Takes 6 damage.
+# Reynauld attacks Skeleton 1 for 4 HP.

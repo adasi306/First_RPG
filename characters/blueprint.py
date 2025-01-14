@@ -4,7 +4,7 @@ class CharacterStats:
     def __init__(
         self,
         damage,
-#        health,
+        #        health,
         maxhealth,
         armor,
         dodge,
@@ -43,10 +43,14 @@ class BlueprintCharacter:
         self.dead = False
 
     def attack(self):
-        raise NotImplementedError("This method needs to be implemented for each character")
+        raise NotImplementedError(
+            "This method needs to be implemented for each character"
+        )
 
     def death(self):
-        raise NotImplementedError("This method needs to be implemented for each faction")
+        raise NotImplementedError(
+            "This method needs to be implemented for each faction"
+        )
 
     def heal(self, amount):
         adjusted_heal = round(amount * self.healing_modifier)
@@ -76,7 +80,11 @@ class BlueprintCharacter:
         return true_damage, reduced_damage
 
     def crit(self, damage):
-        return round(damage * 2) if random.randint(1, 100) <= self.stats.crit_chance else damage
+        return (
+            round(damage * 2)
+            if random.randint(1, 100) <= self.stats.crit_chance
+            else damage
+        )
 
     def if_attack_hit(self):
         return random.randint(1, 100) > self.stats.accuracy
@@ -105,17 +113,27 @@ class BlueprintCharacter:
 
     def stress_heal(self, amount):
         self.stats.stress = max(self.stats.stress - amount, 0)
-#uładnić i skrócić jak bym umiał
+
+    # uładnić i skrócić jak bym umiał
     def apply_status_effect(self, effect_type, charges):
-        if effect_type == "poison" and random.randint(1, 100) <= self.stats.poison_resist:
+        if (
+            effect_type == "poison"
+            and random.randint(1, 100) <= self.stats.poison_resist
+        ):
             print(f"\n{self.name} resisted poison!")
             return
-        elif effect_type == "bleed" and random.randint(1, 100) <= self.stats.bleed_resist:
+        elif (
+            effect_type == "bleed" and random.randint(1, 100) <= self.stats.bleed_resist
+        ):
             print(f"\n{self.name} resisted bleed!")
             return
 
         existing_effect = next(
-            (effect for effect in self.stats.status_effects if effect["type"] == effect_type),
+            (
+                effect
+                for effect in self.stats.status_effects
+                if effect["type"] == effect_type
+            ),
             None,
         )
 
@@ -124,16 +142,28 @@ class BlueprintCharacter:
         else:
             self.stats.status_effects.append({"type": effect_type, "charges": charges})
 
-        print(f"\n{self.name} has been affected by {effect_type} with {charges} charges.")
+        print(
+            f"\n{self.name} has been affected by {effect_type} with {charges} charges."
+        )
 
     def process_status_effects(self, taunter=None):
         effects_to_remove = []
 
         stun_effect = next(
-            (effect for effect in self.stats.status_effects if effect["type"] == "stun"), None
+            (
+                effect
+                for effect in self.stats.status_effects
+                if effect["type"] == "stun"
+            ),
+            None,
         )
         taunt_effect = next(
-            (effect for effect in self.stats.status_effects if effect["type"] == "taunt"), None
+            (
+                effect
+                for effect in self.stats.status_effects
+                if effect["type"] == "taunt"
+            ),
+            None,
         )
 
         if stun_effect and taunt_effect:
@@ -153,12 +183,16 @@ class BlueprintCharacter:
 
         if taunter:
             if taunt_effect:
-                print(f"\n{self.name} is already taunted by {taunt_effect['taunter'].name}!")
+                print(
+                    f"\n{self.name} is already taunted by {taunt_effect['taunter'].name}!"
+                )
             else:
                 self.stats.status_effects.append({"type": "taunt", "taunter": taunter})
                 print(f"\n{self.name} is taunted and must attack {taunter.name}!")
         elif taunt_effect:
-            print(f"\n{self.name} is taunted and must attack {taunt_effect['taunter'].name}!")
+            print(
+                f"\n{self.name} is taunted and must attack {taunt_effect['taunter'].name}!"
+            )
             self.stats.status_effects.remove(taunt_effect)
             return taunt_effect
 
@@ -218,7 +252,9 @@ class BlueprintCharacter:
                             available_positions.remove(pos)
                             break
                         else:
-                            print("\nInvalid position or position already taken. Choose again.")
+                            print(
+                                "\nInvalid position or position already taken. Choose again."
+                            )
                     except ValueError:
                         print("\nInvalid input. Please enter a number between 1 and 4.")
         else:
