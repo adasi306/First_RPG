@@ -1,0 +1,63 @@
+[ {
+    "name": "Connie",
+    "class": "Priestess",
+    "level": 5,
+    "weapon lvl": 3,
+    "armor lvl": 4,
+    "exp": 0,
+    "trinkets": [
+      "Reinforcing almanac",
+      "Focusing lens"
+    ],
+    "positive perks": {
+      "Tough skin": "unlocked",
+      "Willingness to live": "unlocked"
+    },
+    "negative perks": {
+      "Weak nerves": "unlocked"
+    },
+    "stats": {
+      "attack min": 5,
+      "attack max": 8,
+      "max health": 36,
+      "armor": 3,
+      "dodge": 4,
+      "accuracy": 100,
+      "crit_chance": 7,
+      "speed": 3,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 16,
+      "poison_resist": 16,
+      "stun_resist": 32
+    }
+  },
+  {
+    "name": "Robert",
+    "class": "Knight",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Calmness": "unlocked",
+      "Willingness to live": "unlocked"
+    },
+    "negative perks": {},
+    "stats": {
+      "attack min": 3,
+      "attack max": 4,
+      "max health": 30,
+      "armor": 2,
+      "dodge": 0,
+      "accuracy": 90,
+      "crit_chance": 5,
+      "speed": 1,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 15,
+      "poison_resist": 15,
+      "stun_resist": 25
+    }
+  }]

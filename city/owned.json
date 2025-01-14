@@ -1,0 +1,408 @@
+[
+  {
+    "name": "Connie",
+    "class": "Priestess",
+    "level": 5,
+    "weapon lvl": 5,
+    "armor lvl": 5,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Tough skin": "locked",
+      "Willingness to live": "unlocked",
+      "Team player": "unlocked"
+    },
+    "negative perks": {
+      "Weak nerves": "unlocked"
+    },
+    "stats": {
+      "attack min": 7,
+      "attack max": 10,
+      "max health": 40,
+      "armor": 3,
+      "dodge": 5,
+      "accuracy": 100,
+      "crit_chance": 10,
+      "speed": 4,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 18,
+      "poison_resist": 18,
+      "stun_resist": 36
+    }
+  },
+  {
+    "name": "Matthew",
+    "class": "Knight",
+    "level": 2,
+    "weapon lvl": 2,
+    "armor lvl": 2,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Strength": "unlocked",
+      "Proficient": "unlocked"
+    },
+    "negative perks": {
+      "Fear of the enemy": "unlocked"
+    },
+    "stats": {
+      "attack min": 4,
+      "attack max": 6,
+      "max health": 35,
+      "armor": 3,
+      "dodge": 0,
+      "accuracy": 90,
+      "crit_chance": 5,
+      "speed": 2,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 19,
+      "poison_resist": 19,
+      "stun_resist": 30
+    }
+  },
+  {
+    "name": "Nicole",
+    "class": "Priestess",
+    "level": 3,
+    "weapon lvl": 3,
+    "armor lvl": 3,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Determination": "unlocked",
+      "Clot": "unlocked",
+      "Proficient": "unlocked",
+      "Willingness to live": "unlocked"
+    },
+    "negative perks": {},
+    "stats": {
+      "attack min": 6,
+      "attack max": 8,
+      "max health": 32,
+      "armor": 1,
+      "dodge": 4,
+      "accuracy": 100,
+      "crit_chance": 7,
+      "speed": 4,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 14,
+      "poison_resist": 14,
+      "stun_resist": 28
+    }
+  },
+  {
+    "name": "Wendy",
+    "class": "Priestess",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Strength": "unlocked"
+    },
+    "negative perks": {
+      "Curse": "unlocked"
+    },
+    "stats": {
+      "attack min": 3,
+      "attack max": 7,
+      "max health": 25,
+      "armor": 1,
+      "dodge": 3,
+      "accuracy": 100,
+      "crit_chance": 5,
+      "speed": 2,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 10,
+      "poison_resist": 10,
+      "stun_resist": 20
+    }
+  },
+  {
+    "name": "Austin",
+    "class": "Knight",
+    "level": 2,
+    "weapon lvl": 2,
+    "armor lvl": 2,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Strength": "unlocked"
+    },
+    "negative perks": {
+      "Weak spirit": "unlocked",
+      "Clumsiness": "unlocked"
+    },
+    "stats": {
+      "attack min": 4,
+      "attack max": 6,
+      "max health": 35,
+      "armor": 3,
+      "dodge": -1,
+      "accuracy": 90,
+      "crit_chance": 5,
+      "speed": 1,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 19,
+      "poison_resist": 19,
+      "stun_resist": 30
+    }
+  },
+  {
+    "name": "Andre",
+    "class": "Barbarian",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Determination": "unlocked"
+    },
+    "negative perks": {
+      "Weak spirit": "unlocked"
+    },
+    "stats": {
+      "attack min": 5,
+      "attack max": 10,
+      "max health": 30,
+      "armor": 0,
+      "dodge": 0,
+      "accuracy": 75,
+      "crit_chance": 10,
+      "speed": 3,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 0,
+      "poison_resist": 0,
+      "stun_resist": 20
+    }
+  },
+  {
+    "name": "Alexis",
+    "class": "Mage Of Frenzy",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Lucky": "unlocked"
+    },
+    "negative perks": {
+      "Weak spirit": "unlocked"
+    },
+    "stats": {
+      "attack min": 3,
+      "attack max": 5,
+      "max health": 18,
+      "armor": 0,
+      "dodge": 2,
+      "accuracy": 85,
+      "crit_chance": 11,
+      "speed": 3,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 10,
+      "poison_resist": 10,
+      "stun_resist": 22
+    }
+  },
+  {
+    "name": "Jeffrey",
+    "class": "Mage Of Frenzy",
+    "level": 2,
+    "weapon lvl": 2,
+    "armor lvl": 2,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Clot": "unlocked"
+    },
+    "negative perks": {
+      "Stomach problems": "unlocked"
+    },
+    "stats": {
+      "attack min": 4,
+      "attack max": 6,
+      "max health": 22,
+      "armor": 0,
+      "dodge": 2,
+      "accuracy": 90,
+      "crit_chance": 8,
+      "speed": 4,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 12,
+      "poison_resist": 10,
+      "stun_resist": 25
+    }
+  },
+  {
+    "name": "Daniel",
+    "class": "Knight",
+    "level": 3,
+    "weapon lvl": 3,
+    "armor lvl": 3,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Good reflexes": "unlocked"
+    },
+    "negative perks": {
+      "Fear of dying": "unlocked",
+      "Poor eyesight": "unlocked",
+      "Curse": "unlocked"
+    },
+    "stats": {
+      "attack min": 5,
+      "attack max": 6,
+      "max health": 40,
+      "armor": 3,
+      "dodge": 2,
+      "accuracy": 90,
+      "crit_chance": 5,
+      "speed": 1,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 23,
+      "poison_resist": 23,
+      "stun_resist": 35
+    }
+  },
+  {
+    "name": "Miranda",
+    "class": "Adventuress",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {},
+    "negative perks": {
+      "Thin skin": "unlocked",
+      "Curse": "unlocked"
+    },
+    "stats": {
+      "attack min": 7,
+      "attack max": 8,
+      "max health": 20,
+      "armor": -2,
+      "dodge": 4,
+      "accuracy": 95,
+      "crit_chance": 5,
+      "speed": 2,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 2,
+      "poison_resist": 20,
+      "stun_resist": 20
+    }
+  },
+  {
+    "name": "Jerry",
+    "class": "Knight",
+    "level": 3,
+    "weapon lvl": 3,
+    "armor lvl": 3,
+    "exp": 0,
+    "trinkets": [],
+    "positive perks": {
+      "Proficient": "unlocked"
+    },
+    "negative perks": {
+      "Thin skin": "unlocked",
+      "Weak spirit": "unlocked",
+      "Fear of dying": "unlocked"
+    },
+    "stats": {
+      "attack min": 5,
+      "attack max": 6,
+      "max health": 40,
+      "armor": 3,
+      "dodge": 0,
+      "accuracy": 95,
+      "crit_chance": 5,
+      "speed": 2,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 15,
+      "poison_resist": 23,
+      "stun_resist": 35
+    }
+  },
+  {
+    "name": "Leslie",
+    "class": "Adventuress",
+    "level": 4,
+    "weapon lvl": 4,
+    "armor lvl": 4,
+    "exp": 0,
+    "trinkets": [
+      "Leather bracelet",
+      "Lucky Coin"
+    ],
+    "positive perks": {
+      "Willingness to live": "unlocked",
+      "Proficient": "unlocked",
+      "Calmness": "unlocked",
+      "Clot": "unlocked",
+      "Collector": "unlocked"
+    },
+    "negative perks": {
+      "Curse": "unlocked"
+    },
+    "stats": {
+      "attack min": 11,
+      "attack max": 11,
+      "max health": 31,
+      "armor": 1,
+      "dodge": 6,
+      "accuracy": 100,
+      "crit_chance": 20,
+      "speed": 8,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 16,
+      "poison_resist": 32,
+      "stun_resist": 32
+    }
+  },
+  {
+    "name": "Dawn",
+    "class": "Priestess",
+    "level": 1,
+    "weapon lvl": 1,
+    "armor lvl": 1,
+    "exp": 0,
+    "trinkets": [
+      "Bjorn's horn",
+      "Jewel of the healers"
+    ],
+    "positive perks": {
+      "Collector": "unlocked"
+    },
+    "negative perks": {},
+    "stats": {
+      "attack min": 3,
+      "attack max": 6,
+      "max health": 25,
+      "armor": 1,
+      "dodge": 5,
+      "accuracy": 100,
+      "crit_chance": 5,
+      "speed": 2,
+      "stress": 0,
+      "status_effects": [],
+      "bleed_resist": 10,
+      "poison_resist": 10,
+      "stun_resist": 20
+    }
+  }
+]

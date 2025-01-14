@@ -1,0 +1,42 @@
+{
+  "Blacksmith": {
+    "path1": {
+      "level": 4
+    },
+    "path2": {
+      "level": 4
+    }
+  },
+  "Canteen": {
+    "path1": {
+      "level": 3
+    },
+    "path2": {
+      "level": 2
+    }
+  },
+  "Heroes Guild": {
+    "path1": {
+      "level": 5
+    },
+    "path2": {
+      "level": 5
+    }
+  },
+  "Fortune Telling Chamber": {
+    "path1": {
+      "level": 5
+    },
+    "path2": {
+      "level": 3
+    }
+  },
+  "Infirmary": {
+    "path1": {
+      "level": 1
+    },
+    "path2": {
+      "level": 3
+    }
+  }
+}

@@ -106,7 +106,7 @@ fight(heroes, enemies)
 
 
 # TODO
-#naprawić statusy
+# naprawić statusy
 # dodać postacie
 # dodać resztę skilli których na obecną chwilę z jakiegoś powodu nie mogę dadać (np buffy)
 # przetestować wszystkie klasy
