@@ -9,9 +9,18 @@ class enemy(BlueprintCharacter):
         print(f"\n{self.name} died!")
 
     def choose_target(self, target_team):
-        taunt_effect = next((effect for effect in self.stats.status_effects if effect["type"] == "taunt"), None)
+        taunt_effect = next(
+            (
+                effect
+                for effect in self.stats.status_effects
+                if effect["type"] == "taunt"
+            ),
+            None,
+        )
         if taunt_effect:
-            print(f"\n{self.name} is taunted and must attack {taunt_effect['taunter'].name}!")
+            print(
+                f"\n{self.name} is taunted and must attack {taunt_effect['taunter'].name}!"
+            )
             return taunt_effect["taunter"]
         else:
             return random.choice([t for t in target_team if not t.dead])
@@ -39,11 +48,15 @@ class skeleton(enemy):
             if target.blocking:
                 target.stats.stress += stress_change
                 true_damage, blocked_damage = target.block(damage)
-                print(f"\n{self.name} attacks {target.name} for {true_damage} HP. Blocked damage: {blocked_damage}.")
+                print(
+                    f"\n{self.name} attacks {target.name} for {true_damage} HP. Blocked damage: {blocked_damage}."
+                )
             else:
                 target.stats.stress += stress_change
                 target.dmg_taken(damage)
-                print(f"\n{self.name} attacks {target.name} for {target.dmg_armor(damage, target.stats.armor)} HP.")
+                print(
+                    f"\n{self.name} attacks {target.name} for {target.dmg_armor(damage, target.stats.armor)} HP."
+                )
 
             if stress_change > 0:
                 print(f"\n{target.name} gains {stress_change} stress.")
